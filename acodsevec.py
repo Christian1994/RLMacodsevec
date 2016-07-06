@@ -1,3 +1,5 @@
+# Cluster Verde
+
 import numpy as np
 
 y = [1, 0.777777778, 0.9, 0.705882353]
@@ -16,6 +18,8 @@ coef = np.linalg.lstsq(X,y)[0]
 print coef
 print ""
 print np.dot(X,coef)
+
+# Ecuacion de la recta cluster verde
 
 print ""
 print "Cluster Verde: "
