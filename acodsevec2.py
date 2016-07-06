@@ -1,5 +1,3 @@
-# Cluster verde
-
 import numpy as np
 
 y = [1, 0.777777778, 0.9, 0.705882353]
@@ -25,6 +23,7 @@ def sumatelems(a1, a2):
 		suma += a1[i] * a2[i]
 	return suma
 
+# Funcion cluster verde
 def clusterVerde(x, y):
 
 	XTX = [[]]
