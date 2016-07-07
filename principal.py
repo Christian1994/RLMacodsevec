@@ -39,9 +39,9 @@ class Principal:
 		print "A12 " + str(objClustering.getA12())
 
 def main():
-	objMain = Principal(0,0,3,0,0,3,1,0,0,0,0,0)
+	# objMain = Principal(0,0,3,0,0,3,1,0,0,0,0,0)
 	objMain = Principal(2,0,1,0,4,2,0,3,0,1,14,0)
-	objMain = Principal(8,0,0,0,0,0,0,0,0,0,0,0)
+	# objMain = Principal(8,0,0,0,0,0,0,0,0,0,0,0)
 
 if __name__ == "__main__":
 	main()

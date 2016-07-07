@@ -1,4 +1,9 @@
+import rlm
+
 class Clustering:
+
+	global objRegresionLinealMultiple
+	objRegresionLinealMultiple = rlm.RLM
 
 	# Conjuntos de sintomas
 	x1 = 0.0
@@ -362,18 +367,21 @@ class Clustering:
 			self.g2 > self.g4 and 
 			self.g2 > self.g5):
 			salida += "G2: " + str(self.g2) + "\n"
+			objRegresionLinealMultiple.clusterVerde()
 		
 		if(self.g3 > self.g1 and 
 			self.g3 > self.g2 and 
 			self.g3 > self.g4 and 
 			self.g3 > self.g5):
 			salida += "G3: " + str(self.g3) + "\n"
+			objRegresionLinealMultiple.clusterAmarillo()
 		
 		if(self.g4 > self.g1 and 
 			self.g4 > self.g2 and 
 			self.g4 > self.g3 and 
 			self.g4 > self.g5):
 			salida += "G4: " + str(self.g4) + "\n"
+			objRegresionLinealMultiple.clusterAzul()
 		
 		if(self.g5 > self.g1 and 
 			self.g5 > self.g2 and 
