@@ -42,12 +42,13 @@ def main():
 
 	# Pruebas
 
+	# objMain = Principal(0,0,0,0,0,0,0,0,0,0,0,6)
 	# objMain = Principal(0,2,7,0,0,0,0,0,0,0,0,0) # Coccidiosis
 	# objMain = Principal(0,0,1,9,0,0,0,0,0,0,0,0) # Dirofilariasis
 	# objMain = Principal(0,2,2,1,12,0,0,0,0,0,0,0) # Coccidiosis
 	# objMain = Principal(0,0,3,2,2,12,0,0,0,0,0,0) # Moquillo
 	# objMain = Principal(0,1,0,1,0,1,6,0,0,0,0,0) # Rabia
-	objMain = Principal(0,2,1,0,0,0,0,13,0,0,0,0) # Erlichiosis
+	# objMain = Principal(0,2,1,0,0,0,0,13,0,0,0,0) # Erlichiosis
 	# objMain = Principal(0,2,3,0,0,1,0,0,5,0,0,0) # Giardiasis o Parvovirosis (Factores)
 	# objMain = Principal(0,2,2,0,0,1,0,1,0,5,0,0) # Parvovirosis o Giardiasis (Factores)
 	# objMain = Principal(2,0,1,0,4,2,0,3,0,1,14,0) # Leishmaniasis
@@ -57,7 +58,7 @@ def main():
 	# objMain = Principal(0,3,3,1,3,0,0,0,0,0,0,0) # Coccidiosis -> Leptospirosis
 	# objMain = Principal(2,0,0,0,2,0,0,2,0,0,2,0) # Procentajes G muy bajos: El mayor 25%. Dispersion de los sintomas en sus conjuntos Xi
 	# objMain = Principal(0,0,1,1,1,1,0,0,0,0,0,0) # Moquillo Porcentaje G mayor a 40% (A considerar, aunque el limite del mayor G sera 0.6 por el momento)
-	# objMain = Principal(0,0,3,0,0,3,1,0,0,0,0,0) # Giardiasis - Parvovirosis Porcentajes G bajos: El mayor aprox. 38%
+	objMain = Principal(0,0,3,0,0,3,1,0,0,0,0,0) # Giardiasis - Parvovirosis Porcentajes G bajos: El mayor aprox. 38%
 
 if __name__ == "__main__":
 	main()

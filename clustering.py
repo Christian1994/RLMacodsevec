@@ -353,43 +353,58 @@ class Clustering:
 		self.g4 = (self.a8 + self.a9 + self.a10 + self.a11) * (float(1)/float(4))
 		self.g5 = (self.a12) * (float(1)/float(1))
 
+	#-----------------------------------------------------------------------------------------------------------------------------------------------------------
+	# Metodo para seleccionar el cluster que se va a evaluar para prediccion de enfermedad
+
 	@classmethod
 	def mayor_Gi(self):
 		salida = "\nMayor Gi ->  "
-		if(self.g1 > self.g2 and 
-			self.g1 > self.g3 and 
-			self.g1 > self.g4 and 
-			self.g1 > self.g5):
-			salida += "G1: " + str(self.g1) + "\n"
-		
-		if(self.g2 > self.g1 and 
-			self.g2 > self.g3 and 
-			self.g2 > self.g4 and 
-			self.g2 > self.g5):
-			salida += "G2: " + str(self.g2) + "\n"
-			print objRegresionLinealMultiple.ecuacionClusterVerde(self.getX1(), self.getX2(), self.getX3(), self.getX4(), self.getX5())
+		if(self.g1 < 0.3 and self.g2 < 0.3 and self.g3 < 0.3 and self.g4 < 0.3 and self.g5 < 0.3):
+			salida += " Menor a 30%. No hay un diagnostico razonable o claro."
+		else:
+			if(self.g1 > self.g2 and 
+				self.g1 > self.g3 and 
+				self.g1 > self.g4 and 
+				self.g1 > self.g5):
+				salida += "G1: " + str(self.g1) + "-> Acariasis\n"
+			
+			if(self.g2 > self.g1 and 
+				self.g2 > self.g3 and 
+				self.g2 > self.g4 and 
+				self.g2 > self.g5):
+				salida += "G2: " + str(self.g2) + "\n"
+				evalg = objRegresionLinealMultiple.ecuacionClusterVerde(self.getX1(), self.getX2(), self.getX3(), self.getX4(), self.getX5())
+				print evalg
+				print objRegresionLinealMultiple.prediccionEnfermedadCG(evalg)
 
-		if(self.g3 > self.g1 and 
-			self.g3 > self.g2 and 
-			self.g3 > self.g4 and 
-			self.g3 > self.g5):
-			salida += "G3: " + str(self.g3) + "\n"
-			print objRegresionLinealMultiple.ecuacionClusterAmarillo(self.getX1(), self.getX2(), self.getX3(), self.getX4(), self.getX5(), self.getX6(), self.getX7())
-		
-		if(self.g4 > self.g1 and 
-			self.g4 > self.g2 and 
-			self.g4 > self.g3 and 
-			self.g4 > self.g5):
-			salida += "G4: " + str(self.g4) + "\n"
-			print objRegresionLinealMultiple.ecuacionClusterAzul(self.getX1(), self.getX2(), self.getX3(), self.getX4(), self.getX5(), self.getX6(), self.getX7(), self.getX8(), self.getX9(), self.getX10(), self.getX11())
-		
-		if(self.g5 > self.g1 and 
-			self.g5 > self.g2 and 
-			self.g5 > self.g3 and 
-			self.g5 > self.g4):
-			salida += "G5: " + str(self.g5) + "\n"
+			if(self.g3 > self.g1 and 
+				self.g3 > self.g2 and 
+				self.g3 > self.g4 and 
+				self.g3 > self.g5):
+				salida += "G3: " + str(self.g3) + "\n"
+				evaly = objRegresionLinealMultiple.ecuacionClusterAmarillo(self.getX1(), self.getX2(), self.getX3(), self.getX4(), self.getX5(), self.getX6(), self.getX7())
+				print evaly
+				print objRegresionLinealMultiple.prediccionEnfermedadCY(evaly)		
+
+			if(self.g4 > self.g1 and 
+				self.g4 > self.g2 and 
+				self.g4 > self.g3 and 
+				self.g4 > self.g5):
+				salida += "G4: " + str(self.g4) + "\n"
+				evalb = objRegresionLinealMultiple.ecuacionClusterAzul(self.getX1(), self.getX2(), self.getX3(), self.getX4(), self.getX5(), self.getX6(), self.getX7(), self.getX8(), self.getX9(), self.getX10(), self.getX11())
+				print evalb
+				print objRegresionLinealMultiple.prediccionEnfermedadCB(evalb)
+
+			if(self.g5 > self.g1 and 
+				self.g5 > self.g2 and 
+				self.g5 > self.g3 and 
+				self.g5 > self.g4):
+				salida += "G5: " + str(self.g5) + "-> Otitis por Otodectes\n"
 		
 		return salida
+
+	#-----------------------------------------------------------------------------------------------------------------------------------------------------------
+	# Muestra los resultados de los valores de pertenencia a clusteres
 
 	@classmethod
 	def valoresGi(self):

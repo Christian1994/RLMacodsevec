@@ -4,7 +4,11 @@ import numpy as np
 class RLM:
 
 	coef = []
+	evaluacion = 0.0
 	def __init__(): pass
+
+	#-----------------------------------------------------------------------------------------------------------------------------------------------------------
+	# Metodos de regresion lineal multiple de los clusteres verde, amarillo y azul
 
 	@classmethod
 	def clusterVerde(self):
@@ -72,6 +76,9 @@ class RLM:
 		#print ""
 		#print np.dot(X,coef)
 
+	#-----------------------------------------------------------------------------------------------------------------------------------------------------------
+	# Metodos para evaluar la recta de prediccion de cada cluster
+
 	@classmethod
 	def ecuacionClusterVerde(self, x1, x2, x3, x4, x5):
 
@@ -85,8 +92,8 @@ class RLM:
 
 		# Ecuacion de la recta cluster verde
 		# return self.coef
-		evaluacion = self.coef[5] + self.coef[0]*(float(x1)/float(8)) + self.coef[1]*(float(x2)/float(10)) + self.coef[2]*(float(x3)/float(9)) + self.coef[3]*(float(x4)/float(10)) + self.coef[4]*(float(x5)/float(17))
-		return evaluacion
+		self.evaluacion = self.coef[5] + self.coef[0]*(float(x1)/float(8)) + self.coef[1]*(float(x2)/float(10)) + self.coef[2]*(float(x3)/float(9)) + self.coef[3]*(float(x4)/float(10)) + self.coef[4]*(float(x5)/float(17))
+		return self.evaluacion
 
 	@classmethod
 	def ecuacionClusterAmarillo(self, x1, x2, x3, x4, x5, x6, x7):
@@ -101,8 +108,8 @@ class RLM:
 
 		# Ecuacion de la recta cluster verde
 		# return self.coef
-		evaluacion = self.coef[7] + self.coef[0]*(float(x1)/float(8)) + self.coef[1]*(float(x2)/float(10)) + self.coef[2]*(float(x3)/float(9)) + self.coef[3]*(float(x4)/float(10)) + self.coef[4]*(float(x5)/float(17)) + self.coef[5]*(float(x6)/float(19)) + self.coef[6]*(float(x7)/float(9))
-		return evaluacion
+		self.evaluacion = self.coef[7] + self.coef[0]*(float(x1)/float(8)) + self.coef[1]*(float(x2)/float(10)) + self.coef[2]*(float(x3)/float(9)) + self.coef[3]*(float(x4)/float(10)) + self.coef[4]*(float(x5)/float(17)) + self.coef[5]*(float(x6)/float(19)) + self.coef[6]*(float(x7)/float(9))
+		return self.evaluacion
 
 	@classmethod
 	def ecuacionClusterAzul(self, x1, x2, x3, x4, x5, x6, x7, x8, x9, x10, x11):
@@ -118,8 +125,77 @@ class RLM:
 
 		# Ecuacion de la recta cluster verde
 		#return self.coef
-		evaluacion = self.coef[11] + self.coef[0]*(float(x1)/float(8)) + self.coef[1]*(float(x2)/float(10)) + self.coef[2]*(float(x3)/float(9)) + self.coef[3]*(float(x4)/float(10)) + self.coef[4]*(float(x5)/float(17)) + self.coef[5]*(float(x6)/float(19)) + self.coef[6]*(float(x7)/float(9)) + self.coef[7]*(float(x8)/float(16)) + self.coef[8]*(float(x9)/float(11)) + self.coef[9]*(float(x10)/float(11)) + self.coef[10]*(float(x11)/float(27))
-		return evaluacion
+		self.evaluacion = self.coef[11] + self.coef[0]*(float(x1)/float(8)) + self.coef[1]*(float(x2)/float(10)) + self.coef[2]*(float(x3)/float(9)) + self.coef[3]*(float(x4)/float(10)) + self.coef[4]*(float(x5)/float(17)) + self.coef[5]*(float(x6)/float(19)) + self.coef[6]*(float(x7)/float(9)) + self.coef[7]*(float(x8)/float(16)) + self.coef[8]*(float(x9)/float(11)) + self.coef[9]*(float(x10)/float(11)) + self.coef[10]*(float(x11)/float(27))
+		return self.evaluacion
+
+	#-----------------------------------------------------------------------------------------------------------------------------------------------------------
+	# Metodos para prediccion de enfermedades dentro de cada cluster
+
+	@classmethod
+	def prediccionEnfermedadCG(self, evaluacion):
+
+		enfermedades = ["Babesiosis", "Coccidiosis", "Dirofilariasis", "Leptospirosis"]
+		y = [1, 0.777777778, 0.9, 0.705882353]
+		yerrabsg = []
+
+		for i in range(len(y)):
+			yerrabsg += [abs(self.evaluacion - y[i])]
+
+		print yerrabsg
+
+		menor = yerrabsg[0]
+		indice = 0
+		for i in range(1, len(yerrabsg)):
+			if(yerrabsg[i] < menor):
+				menor = yerrabsg[i]
+				indice = i
+
+		print menor
+		return enfermedades[indice]
+
+	@classmethod
+	def prediccionEnfermedadCY(self, evaluacion):
+
+		enfermedades = ["Moquillo", "Rabia"]
+		y = [0.631578947, 0.666666667] 
+		yerrabsy = []
+
+		for i in range(len(y)):
+			yerrabsy += [abs(self.evaluacion - y[i])]
+
+		print yerrabsy
+
+		menor = yerrabsy[0]
+		indice = 0
+		for i in range(1, len(yerrabsy)):
+			if(yerrabsy[i] < menor):
+				menor = yerrabsy[i]
+				indice = i
+				
+		print menor
+		return enfermedades[indice]
+
+	@classmethod
+	def prediccionEnfermedadCB(self, evaluacion):
+
+		enfermedades = ["Erlichiosis", "Giardiasis", "Parvovirosis", "Leishmaniasis"]
+		y = [0.8125, 0.454545455, 0.454545455, 0.518518519]
+		yerrabsb = []
+
+		for i in range(len(y)):
+			yerrabsb += [abs(self.evaluacion - y[i])]
+
+		print yerrabsb
+
+		menor = yerrabsb[0]
+		indice = 0
+		for i in range(1, len(yerrabsb)):
+			if(yerrabsb[i] < menor):
+				menor = yerrabsb[i]
+				indice = i
+
+		print menor
+		return enfermedades[indice]
 
 """
 verde = RLM()
