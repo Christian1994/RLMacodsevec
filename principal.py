@@ -58,7 +58,7 @@ def main():
 	# objMain = Principal(0,3,3,1,3,0,0,0,0,0,0,0) # Coccidiosis -> Leptospirosis
 	# objMain = Principal(2,0,0,0,2,0,0,2,0,0,2,0) # Procentajes G muy bajos: El mayor 25%. Dispersion de los sintomas en sus conjuntos Xi
 	# objMain = Principal(0,0,1,1,1,1,0,0,0,0,0,0) # Moquillo Porcentaje G mayor a 40% (A considerar, aunque el limite del mayor G sera 0.6 por el momento)
-	objMain = Principal(0,0,3,0,0,3,1,0,0,0,0,0) # Giardiasis - Parvovirosis Porcentajes G bajos: El mayor aprox. 38%
+	objMain = Principal(0,0,3,0,0,3,1,0,0,0,0,0) # Giardiasis - Parvovirosis Porcentajes G bajos: El mayor aprox. 38%. Pendiente criterio de desempate
 
 if __name__ == "__main__":
 	main()
