@@ -46,51 +46,51 @@ class Clustering:
 
 	@classmethod
 	def getX1(self):
-		return x1
+		return self.x1
 
 	@classmethod
 	def getX2(self):
-		return x2
+		return self.x2
 
 	@classmethod
 	def getX3(self):
-		return x3
+		return self.x3
 
 	@classmethod
 	def getX4(self):
-		return x4
+		return self.x4
 
 	@classmethod
 	def getX5(self):
-		return x5
+		return self.x5
 
 	@classmethod
 	def getX6(self):
-		return x6
+		return self.x6
 
 	@classmethod
 	def getX7(self):
-		return x7
+		return self.x7
 
 	@classmethod
 	def getX8(self):
-		return x8
+		return self.x8
 
 	@classmethod
 	def getX9(self):
-		return x9
+		return self.x9
 
 	@classmethod
 	def getX10(self):
-		return x10
+		return self.x10
 
 	@classmethod
 	def getX11(self):
-		return x11
+		return self.x11
 
 	@classmethod
 	def getX12(self):
-		return x12
+		return self.x12
 
 	# Setters de Xi
 
@@ -367,21 +367,21 @@ class Clustering:
 			self.g2 > self.g4 and 
 			self.g2 > self.g5):
 			salida += "G2: " + str(self.g2) + "\n"
-			objRegresionLinealMultiple.clusterVerde()
-		
+			print objRegresionLinealMultiple.ecuacionClusterVerde(self.getX1(), self.getX2(), self.getX3(), self.getX4(), self.getX5())
+
 		if(self.g3 > self.g1 and 
 			self.g3 > self.g2 and 
 			self.g3 > self.g4 and 
 			self.g3 > self.g5):
 			salida += "G3: " + str(self.g3) + "\n"
-			objRegresionLinealMultiple.clusterAmarillo()
+			print objRegresionLinealMultiple.ecuacionClusterAmarillo(self.getX1(), self.getX2(), self.getX3(), self.getX4(), self.getX5(), self.getX6(), self.getX7())
 		
 		if(self.g4 > self.g1 and 
 			self.g4 > self.g2 and 
 			self.g4 > self.g3 and 
 			self.g4 > self.g5):
 			salida += "G4: " + str(self.g4) + "\n"
-			objRegresionLinealMultiple.clusterAzul()
+			print objRegresionLinealMultiple.ecuacionClusterAzul(self.getX1(), self.getX2(), self.getX3(), self.getX4(), self.getX5(), self.getX6(), self.getX7(), self.getX8(), self.getX9(), self.getX10(), self.getX11())
 		
 		if(self.g5 > self.g1 and 
 			self.g5 > self.g2 and 
