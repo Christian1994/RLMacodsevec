@@ -3,74 +3,89 @@ import numpy as np
 
 class RLM:
 
+	x = []
+	y = []
 	coef = []
 	evaluacion = 0.0
 	def __init__(): pass
 
 	#-----------------------------------------------------------------------------------------------------------------------------------------------------------
+	# Metodos para retornar las matrices X (variables explicativas) y Y (variables respuesta) para la regresion lineal multiple y futuros calculos
+	@classmethod
+	def matricesXYClusterVerde(self, x, y):
+
+		self.y = [1, 0.777777778, 0.9, 0.705882353]
+
+		self.x = [[0, 0, 0, 0],
+				  [1, 0.222222222, 0, 0.117647059],
+				  [0, 0.777777778, 0.1, 0.117647059],
+				  [0, 0, 0.9, 0.058823529],
+				  [0, 0, 0, 0.705882353]]
+
+	@classmethod
+	def matricesXYClusterAmarillo(self, x, y):
+
+		self.y = [0.631578947, 0.666666667]
+
+		self.x = [[0, 0],
+				  [0, 0.111111111],
+				  [0.157894737, 0],
+				  [0.105263158, 0.111111111],
+				  [0.105263158, 0],
+				  [0.631578947, 0.111111111],
+				  [0, 0.666666667]]
+
+	@classmethod
+	def matricesXYClusterAzul(self, x, y):
+
+		self.y = [0.8125, 0.454545455, 0.454545455, 0.518518519]
+
+		self.x = [[0, 0, 0, 0.074074074],
+				  [0.125, 0.181818182, 0.181818182, 0],
+				  [0.0625, 0.272727273, 0.181818182, 0.037037037],
+				  [0, 0, 0, 0],
+				  [0, 0, 0, 0.148148148],
+				  [0, 0.090909091, 0.090909091, 0.074074074],
+				  [0, 0, 0, 0],
+				  [0.8125, 0, 0.090909091, 0.111111111],
+				  [0, 0.454545455, 0, 0],
+				  [0, 0, 0.454545455, 0.037037037],
+				  [0, 0, 0, 0.518518519]]
+
+	#-----------------------------------------------------------------------------------------------------------------------------------------------------------
 	# Metodos de regresion lineal multiple de los clusteres verde, amarillo y azul
 
 	@classmethod
-	def clusterVerde(self):
+	def RLMclusterVerde(self):
 
-		y = [1, 0.777777778, 0.9, 0.705882353]
+		self.matricesXYClusterVerde(self.x, self.y)			 
 
-
-		x = [[0, 0, 0, 0],
-			 [1, 0.222222222, 0, 0.117647059],
-			 [0, 0.777777778, 0.1, 0.117647059],
-			 [0, 0, 0.9, 0.058823529],
-			 [0, 0, 0, 0.705882353]]
-			 
-
-		X = np.column_stack(x+[[1]*len(x[0])])
-		self.coef = np.linalg.lstsq(X,y)[0]
+		X = np.column_stack(self.x+[[1]*len(self.x[0])])
+		self.coef = np.linalg.lstsq(X,self.y)[0]
 
 		#print self.coef
 		#print ""
 		#print np.dot(X,coef)
 
 	@classmethod
-	def clusterAmarillo(self):
+	def RLMclusterAmarillo(self):
 
-		y = [0.631578947, 0.666666667]
-
-
-		x = [[0, 0],
-			 [0, 0.111111111],
-			 [0.157894737, 0],
-			 [0.105263158, 0.111111111],
-			 [0.105263158, 0],
-			 [0.631578947, 0.111111111],
-			 [0, 0.666666667]]
+		self.matricesXYClusterAmarillo(self.x, self.y)
 			 
-		X = np.column_stack(x+[[1]*len(x[0])])
-		self.coef = np.linalg.lstsq(X,y)[0]
+		X = np.column_stack(self.x+[[1]*len(self.x[0])])
+		self.coef = np.linalg.lstsq(X,self.y)[0]
 
 		#print self.coef
 		#print ""
 		#print np.dot(X,coef)
 
 	@classmethod
-	def clusterAzul(self):
+	def RLMclusterAzul(self):
 
-		y = [0.8125, 0.454545455, 0.454545455, 0.518518519]
+		self.matricesXYClusterAzul(self.x, self.y)
 
-
-		x = [[0, 0, 0, 0.074074074],
-			 [0.125, 0.181818182, 0.181818182, 0],
-			 [0.0625, 0.272727273, 0.181818182, 0.037037037],
-			 [0, 0, 0, 0],
-			 [0, 0, 0, 0.148148148],
-			 [0, 0.090909091, 0.090909091, 0.074074074],
-			 [0, 0, 0, 0],
-			 [0.8125, 0, 0.090909091, 0.111111111],
-			 [0, 0.454545455, 0, 0],
-			 [0, 0, 0.454545455, 0.037037037],
-			 [0, 0, 0, 0.518518519]]
-
-		X = np.column_stack(x+[[1]*len(x[0])])
-		self.coef = np.linalg.lstsq(X,y)[0]
+		X = np.column_stack(self.x+[[1]*len(self.x[0])])
+		self.coef = np.linalg.lstsq(X,self.y)[0]
 
 		#print self.coef
 		#print ""
@@ -82,7 +97,7 @@ class RLM:
 	@classmethod
 	def ecuacionClusterVerde(self, x1, x2, x3, x4, x5):
 
-		self.clusterVerde()
+		self.RLMclusterVerde()
 
 		# Ecuacion de la recta cluster verde
 		print ""
@@ -98,7 +113,7 @@ class RLM:
 	@classmethod
 	def ecuacionClusterAmarillo(self, x1, x2, x3, x4, x5, x6, x7):
 		
-		self.clusterAmarillo()
+		self.RLMclusterAmarillo()
 		
 		# Ecuacion de la recta cluster amarillo
 		print ""
@@ -114,7 +129,7 @@ class RLM:
 	@classmethod
 	def ecuacionClusterAzul(self, x1, x2, x3, x4, x5, x6, x7, x8, x9, x10, x11):
 
-		self.clusterAzul()
+		self.RLMclusterAzul()
 
 		# Ecuacion de la recta cluster azul
 
@@ -135,11 +150,11 @@ class RLM:
 	def prediccionEnfermedadCG(self, evaluacion):
 
 		enfermedades = ["Babesiosis", "Coccidiosis", "Dirofilariasis", "Leptospirosis"]
-		y = [1, 0.777777778, 0.9, 0.705882353]
+		y = [1, 0.777777778, 0.9, 0.705882353]		
 		yerrabsg = []
 
 		for i in range(len(y)):
-			yerrabsg += [abs(self.evaluacion - y[i])]
+			yerrabsg += [abs(y[i] - self.evaluacion)]  
 
 		print yerrabsg
 
@@ -151,6 +166,7 @@ class RLM:
 				indice = i
 
 		print menor
+		print "SCE: " + str(self.SCEclusterVerde(self.y, self.evaluacion))
 		return enfermedades[indice]
 
 	@classmethod
@@ -161,7 +177,7 @@ class RLM:
 		yerrabsy = []
 
 		for i in range(len(y)):
-			yerrabsy += [abs(self.evaluacion - y[i])]
+			yerrabsy += [abs(y[i] - self.evaluacion)]
 
 		print yerrabsy
 
@@ -173,6 +189,7 @@ class RLM:
 				indice = i
 				
 		print menor
+		print "SCE: " + str(self.SCEclusterAmarillo(self.y, self.evaluacion))
 		return enfermedades[indice]
 
 	@classmethod
@@ -183,7 +200,7 @@ class RLM:
 		yerrabsb = []
 
 		for i in range(len(y)):
-			yerrabsb += [abs(self.evaluacion - y[i])]
+			yerrabsb += [abs(y[i] - self.evaluacion)] # Implementar sumatoria de errores cuadraticos
 
 		print yerrabsb
 
@@ -195,7 +212,35 @@ class RLM:
 				indice = i
 
 		print menor
+		print "SCE: " + str(self.SCEclusterAzul(self.y, self.evaluacion))
 		return enfermedades[indice]
+
+	#-----------------------------------------------------------------------------------------------------------------------------------------------------------
+	# Metodos para calcular el SCE de cada cluster
+
+	@classmethod
+	def SCEclusterVerde(self, y, evaluacion):
+		sce = 0.0
+		for i in range(len(self.y)):
+			sce += ((self.y[i] - self.evaluacion)**2)
+
+		return sce
+
+	@classmethod
+	def SCEclusterAmarillo(self, y, evaluacion):
+		sce = 0.0
+		for i in range(len(self.y)):
+			sce += ((self.y[i] - self.evaluacion)**2)
+
+		return sce
+
+	@classmethod
+	def SCEclusterAzul(self, y, evaluacion):
+		sce = 0.0
+		for i in range(len(self.y)):
+			sce += ((self.y[i] - self.evaluacion)**2)
+
+		return sce
 
 """
 verde = RLM()
@@ -207,3 +252,11 @@ amarillo.clusterAmarillo()
 azul = RLM()
 azul.clusterAzul()
 """
+
+# Notas importantes:
+# Implementar sumatoria de errores cuadraticos SCE (Error en la suma de cuadrados Sumatoria((Y - ^Y) ** 2))
+# Tratar de probar la implementacion de regresion cuadratica o exponencial para comparar errores a fin de plantear alternativas
+# Matriz de confusion
+# Datos de entrada y base de conocimiento dinamicamente mediante carga de archivos de texto
+# Mejorar codificacion en cuanto funcione
+# Tratar de proponer algoritmo de clustering mediante elemento sobre norma Ai
